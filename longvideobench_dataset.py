@@ -47,7 +47,6 @@ def insert_subtitles(subtitles):
 
     return interleaved_list
         
-
 def insert_subtitles_into_frames(frames, frame_timestamps, subtitles, 
                                  starting_timestamp_for_subtitles, duration):
     interleaved_list = []
@@ -108,7 +107,6 @@ def insert_subtitles_into_frames(frames, frame_timestamps, subtitles,
         
     return interleaved_list
     
-
 class LongVideoBenchDataset(Dataset):
     def __init__(self,
                  data_path,
@@ -148,8 +146,7 @@ class LongVideoBenchDataset(Dataset):
             
         frames, frame_timestamps = load_video(os.path.join(self.data_path, "videos", di["video_path"]), di["duration"], max_num_frames=self.max_num_frames)
         
-        
-        
+            
         with open(os.path.join(self.data_path, "subtitles", di["subtitle_path"])) as f:
             subtitles = json.load(f)
         inputs = []
@@ -173,13 +170,11 @@ class LongVideoBenchDataset(Dataset):
     def get_id(self, index):
         return self.data[index]["id"]
         
-    
 if __name__ == "__main__":
     db = LongVideoBenchDataset("../", "lvb_val.json")
     for i in range(10):
         print([ele for ele in db[i]["inputs"] if not isinstance(ele, str)])
-                      
+                     
 
             
-
             
