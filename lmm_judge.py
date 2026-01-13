@@ -82,7 +82,7 @@ def response_parse(text):
     for match in pattern.finditer(text):
         key = match.group(1).strip()
         value = match.group(2).strip()
-        value = re.sub(r'^````\n?|\n?````$', '', value)
+        value = re.sub(r'^```\n?|\n?```$', '', value)
         content_dict[key] = value
     
     return content_dict
